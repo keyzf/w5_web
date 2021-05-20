@@ -1,127 +1,131 @@
 <template>
-<a-layout-content>
-    <a-row :gutter="[16,16]">
-        <a-col :span="24">
-            <div class="sound_div">
-                <a-icon type="sound" />
-                <span class="sound_text">{{w5_json.notice}}</span>
-            </div>
-        </a-col>
-        <a-col :span="6">
-            <a-card class="icondiv">
-                <div class="left">
-                    <a-statistic title="剧本数量" :value="sums_data['workflow_count']" />
+    <a-layout-content>
+        <a-row :gutter="[16,16]">
+            <a-col :span="24">
+                <div class="sound_div">
+                    <a-icon type="sound" />
+                    <span class="sound_text">{{w5_json.notice}}</span>
                 </div>
-                <div class="right">
-                    <a-icon class="icons" type="cloud-sync" />
-                </div>
-            </a-card>
-        </a-col>
-        <a-col :span="6">
-            <a-card class="icondiv">
-                <div class="left">
-                    <a-statistic title="执行次数" :value="sums_data['logs_count']" />
-                </div>
-                <div class="right">
-                    <a-icon class="icons" type="car" />
-                </div>
-            </a-card>
-        </a-col>
-        <a-col :span="6">
-            <a-card class="icondiv">
-                <div class="left">
-                    <a-statistic title="执行异常" :value="sums_data['logs_err_count']" />
-                </div>
-                <div class="right">
-                    <a-icon class="icons" type="warning" />
-                </div>
-            </a-card>
-        </a-col>
+            </a-col>
+            <a-col :span="6">
+                <a-card class="icondiv">
+                    <div class="left">
+                        <a-statistic title="剧本数量" :value="sums_data['workflow_count']" />
+                    </div>
+                    <div class="right">
+                        <a-icon class="icons" type="cloud-sync" />
+                    </div>
+                </a-card>
+            </a-col>
+            <a-col :span="6">
+                <a-card class="icondiv">
+                    <div class="left">
+                        <a-statistic title="执行次数" :value="sums_data['logs_count']" />
+                    </div>
+                    <div class="right">
+                        <a-icon class="icons" type="car" />
+                    </div>
+                </a-card>
+            </a-col>
+            <a-col :span="6">
+                <a-card class="icondiv">
+                    <div class="left">
+                        <a-statistic title="执行异常" :value="sums_data['logs_err_count']" />
+                    </div>
+                    <div class="right">
+                        <a-icon class="icons" type="warning" />
+                    </div>
+                </a-card>
+            </a-col>
 
-        <a-col :span="6">
-            <a-card class="icondiv">
-                <div class="left">
-                    <a-statistic title="正在执行" :value="sums_data['exec_sum']" />
-                </div>
-                <div class="right">
-                    <a-icon class="icons" type="rocket" />
-                </div>
-            </a-card>
-        </a-col>
+            <a-col :span="6">
+                <a-card class="icondiv">
+                    <div class="left">
+                        <a-statistic title="正在执行" :value="sums_data['exec_sum']" />
+                    </div>
+                    <div class="right">
+                        <a-icon class="icons" type="rocket" />
+                    </div>
+                </a-card>
+            </a-col>
 
-        <a-col :span="16">
-            <a-card size="small">
-                <span slot="title" class="titlex">
-                    <a-icon type="line-chart" /> 今日执行统计</span>
-                <div class="tb_div" id="main2">
+            <a-col :span="16">
+                <a-card size="small">
+                    <span slot="title" class="titlex">
+                        <a-icon type="line-chart" /> 今日执行统计</span>
+                    <div class="tb_div" id="main2">
 
-                </div>
-            </a-card>
-        </a-col>
-        <a-col :span="8">
-            <a-card size="small">
-                <span slot="title" class="titlex">
-                    <a-icon type="pie-chart" /> 剧本统计</span>
-                <div class="tb_div" id="main1">
-                </div>
-            </a-card>
-        </a-col>
+                    </div>
+                </a-card>
+            </a-col>
+            <a-col :span="8">
+                <a-card size="small">
+                    <span slot="title" class="titlex">
+                        <a-icon type="pie-chart" /> 剧本统计</span>
+                    <div class="tb_div" id="main1">
+                    </div>
+                </a-card>
+            </a-col>
 
-        <a-col :span="24">
-            <a-card size="small">
-                <span slot="title" class="titlex">
-                    <a-icon type="bug" /> 执行日记 [ Top 100 ]
-                </span>
-                <!-- <span class="more" @click="onMore">
+            <a-col :span="24">
+                <a-card size="small">
+                    <span slot="title" class="titlex">
+                        <a-icon type="bug" /> 执行日记 [ Top 100 ]
+                    </span>
+                    <!-- <span class="more" @click="onMore">
                     <a-icon type="double-right" /> 更多
                 </span> -->
-                <a-table rowKey="id" size="middle" :scroll="{ y: 260 }" :showHeader="false" :columns="columns" :data-source="logs_data" :loading="loading" :pagination="false">
-                    <span slot="name" slot-scope="text">
-                        <b>{{ text }}</b>
-                    </span>
+                    <a-table rowKey="id" size="middle" :scroll="{ y: 260 }" :showHeader="false" :columns="columns" :data-source="logs_data" :loading="loading" :pagination="false">
+                        <span slot="name" slot-scope="text">
+                            <b>{{ text }}</b>
+                        </span>
 
-                    <span slot="app_name" slot-scope="text, record" v-if="text=='开始'">
-                        <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/start.png'" />
-                        <a-tag color="#1863d4">{{ text }} </a-tag>
-                    </span>
-                    <span slot="app_name" slot-scope="text, record" v-else-if="text=='结束'">
-                        <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/end.png'" />
-                        <a-tag color="#b92525">{{ text }} </a-tag>
-                    </span>
-                    <span slot="app_name" slot-scope="text, record" v-else-if="text=='定时器'">
-                        <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/timer.png'" />
-                        <a-tag color="#3ca03b">{{ text }} </a-tag>
-                    </span>
-                    <span slot="app_name" slot-scope="text, record" v-else-if="text=='用户输入'">
-                        <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/input.png'" />
-                        <a-tag color="#b628da">{{ text }} </a-tag>
-                    </span>
-                    <span slot="app_name" slot-scope="text, record" v-else-if="text=='WebHook'">
-                        <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/webhook.png'" />
-                        <a-tag color="#53b0b5">{{ text }} </a-tag>
-                    </span>
-                    <span slot="app_name" slot-scope="text, record" v-else>
-                        <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/'+JSON.parse(record.args).app_dir+'/icon.png'" />
-                        <a-tag color="#7d838c">{{ text }} </a-tag>
-                    </span>
+                        <span slot="app_name" slot-scope="text, record" v-if="text=='开始'">
+                            <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/start.png'" />
+                            <a-tag color="#1863d4">{{ text }} </a-tag>
+                        </span>
+                        <span slot="app_name" slot-scope="text, record" v-else-if="text=='结束'">
+                            <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/end.png'" />
+                            <a-tag color="#b92525">{{ text }} </a-tag>
+                        </span>
+                        <span slot="app_name" slot-scope="text, record" v-else-if="text=='定时器'">
+                            <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/timer.png'" />
+                            <a-tag color="#3ca03b">{{ text }} </a-tag>
+                        </span>
+                        <span slot="app_name" slot-scope="text, record" v-else-if="text=='用户输入'">
+                            <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/input.png'" />
+                            <a-tag color="#b628da">{{ text }} </a-tag>
+                        </span>
+                        <span slot="app_name" slot-scope="text, record" v-else-if="text=='WebHook'">
+                            <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/webhook.png'" />
+                            <a-tag color="#53b0b5">{{ text }} </a-tag>
+                        </span>
+                        <span slot="app_name" slot-scope="text, record" v-else-if="text==''">
+                            <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/unknown.png'" />
+                            <a-tag color="#53b0b5">{{ text }} </a-tag>
+                        </span>
+                        <span slot="app_name" slot-scope="text, record" v-else>
+                            <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/'+JSON.parse(record.args).app_dir+'/icon.png'" />
+                            <a-tag color="#7d838c">{{ text }} </a-tag>
+                        </span>
 
-                    <span slot="status" slot-scope="text">
-                        <a-tag v-if="text==0" color="#469823">正常</a-tag>
-                        <a-tag v-if="text==1" color="#9e8c0a">警告</a-tag>
-                        <a-tag v-if="text==2" color="#9c5656">错误</a-tag>
-                        <a-tag v-if="text==3" color="#bf0c0c">危险</a-tag>
-                    </span>
+                        <span slot="status" slot-scope="text">
+                            <a-tag v-if="text==0" color="#469823">正常</a-tag>
+                            <a-tag v-if="text==1" color="#9e8c0a">警告</a-tag>
+                            <a-tag v-if="text==2" color="#9c5656">错误</a-tag>
+                            <a-tag v-if="text==3" color="#bf0c0c">危险</a-tag>
+                        </span>
 
-                    <di slot="create_time" slot-scope="text">
-                        {{Dayjs(text).subtract(8, 'hour').format('YYYY-MM-DD HH:mm:ss')}}
-                    </di>
-                </a-table>
-            </a-card>
-        </a-col>
+                        <di slot="create_time" slot-scope="text">
+                            {{Dayjs(text).subtract(8, 'hour').format('YYYY-MM-DD HH:mm:ss')}}
+                        </di>
+                    </a-table>
+                </a-card>
+            </a-col>
 
-    </a-row>
+        </a-row>
 
-</a-layout-content>
+    </a-layout-content>
 </template>
 
 <script>

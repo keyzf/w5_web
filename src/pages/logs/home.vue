@@ -32,6 +32,10 @@
                 <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/webhook.png'" />
                 <a-tag color="#53b0b5">{{ text }} </a-tag>
             </span>
+            <span slot="app_name" slot-scope="text, record" v-else-if="text==''">
+                <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/basic/unknown.png'" />
+                <a-tag color="#53b0b5">{{ text }} </a-tag>
+            </span>
             <span slot="app_name" slot-scope="text, record" v-else>
                 <a-avatar :size="22" style="margin-right:3px;" :src="BaseURL+'/app/'+JSON.parse(record.args).app_dir+'/icon.png'" />
                 <a-tag color="#7d838c">{{ text }} </a-tag>

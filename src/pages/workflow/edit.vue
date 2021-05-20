@@ -1,205 +1,205 @@
 <template>
-<div>
-    <a-row type="flex">
-        <div class="left_right" @click="onSwitchLeft">
-            <a-icon v-if="switchLeft=='open'" type="double-left" />
-            <a-icon v-else-if="switchLeft=='close'" type="double-right" />
-        </div>
-        <a-col flex="174px" class="left_div">
-            <div class="leftx">
-                <a-tabs default-active-key="1">
-                    <a-tab-pane key="1">
-                        <span slot="tab">
-                            <a-tooltip placement="top">
-                                <template slot="title">
-                                    <span>控制器</span>
-                                </template>
-                                <a-icon type="deployment-unit" />
-                            </a-tooltip>
-                        </span>
-                        <a-row class="ssc" :gutter="[0,22]">
-                            <a-col :span="12">
-                                <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/basic/start.png','开始','start')">
-                                    <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/basic/start.png'" />
-                                    <div class="tools_name"><span>开始</span></div>
-                                </div>
-                            </a-col>
+    <div>
+        <a-row type="flex">
+            <div class="left_right" @click="onSwitchLeft">
+                <a-icon v-if="switchLeft=='open'" type="double-left" />
+                <a-icon v-else-if="switchLeft=='close'" type="double-right" />
+            </div>
+            <a-col flex="174px" class="left_div">
+                <div class="leftx">
+                    <a-tabs default-active-key="1">
+                        <a-tab-pane key="1">
+                            <span slot="tab">
+                                <a-tooltip placement="top">
+                                    <template slot="title">
+                                        <span>控制器</span>
+                                    </template>
+                                    <a-icon type="deployment-unit" />
+                                </a-tooltip>
+                            </span>
+                            <a-row class="ssc" :gutter="[0,22]">
+                                <a-col :span="12">
+                                    <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/basic/start.png','开始','start')">
+                                        <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/basic/start.png'" />
+                                        <div class="tools_name"><span>开始</span></div>
+                                    </div>
+                                </a-col>
 
-                            <a-col :span="12">
-                                <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/basic/end.png','结束','end')">
-                                    <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/basic/end.png'" />
-                                    <div class="tools_name"><span>结束</span></div>
-                                </div>
-                            </a-col>
+                                <a-col :span="12">
+                                    <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/basic/end.png','结束','end')">
+                                        <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/basic/end.png'" />
+                                        <div class="tools_name"><span>结束</span></div>
+                                    </div>
+                                </a-col>
 
-                            <a-col :span="12">
-                                <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/basic/input.png','用户输入','input')">
-                                    <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/basic/input.png'" />
-                                    <div class="tools_name"><span>用户输入</span></div>
-                                </div>
-                            </a-col>
+                                <a-col :span="12">
+                                    <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/basic/input.png','用户输入','input')">
+                                        <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/basic/input.png'" />
+                                        <div class="tools_name"><span>用户输入</span></div>
+                                    </div>
+                                </a-col>
 
-                            <a-col :span="12">
-                                <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/basic/webhook.png','WebHook','webhook')">
-                                    <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/basic/webhook.png'" />
-                                    <div class="tools_name"><span>WebHook</span></div>
-                                </div>
-                            </a-col>
+                                <a-col :span="12">
+                                    <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/basic/webhook.png','WebHook','webhook')">
+                                        <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/basic/webhook.png'" />
+                                        <div class="tools_name"><span>WebHook</span></div>
+                                    </div>
+                                </a-col>
 
-                            <a-col :span="12">
-                                <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/basic/timer.png','定时器','timer')">
-                                    <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/basic/timer.png'" />
-                                    <div class="tools_name"><span>定时器</span></div>
-                                </div>
-                            </a-col>
-                        </a-row>
-                    </a-tab-pane>
-                    <a-tab-pane key="2">
-                        <span slot="tab">
-                            <a-tooltip placement="top">
-                                <template slot="title">
-                                    <span>应用列表</span>
-                                </template>
-                                <a-icon type="appstore" />
-                            </a-tooltip>
-                        </span>
-                        <!-- <a-collapse accordion default-active-key="2" :bordered="false" expand-icon-position="right">
+                                <a-col :span="12">
+                                    <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/basic/timer.png','定时器','timer')">
+                                        <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/basic/timer.png'" />
+                                        <div class="tools_name"><span>定时器</span></div>
+                                    </div>
+                                </a-col>
+                            </a-row>
+                        </a-tab-pane>
+                        <a-tab-pane key="2">
+                            <span slot="tab">
+                                <a-tooltip placement="top">
+                                    <template slot="title">
+                                        <span>应用列表</span>
+                                    </template>
+                                    <a-icon type="appstore" />
+                                </a-tooltip>
+                            </span>
+                            <!-- <a-collapse accordion default-active-key="2" :bordered="false" expand-icon-position="right">
                             <template #expandIcon="props">
                                 <a-icon type="caret-right" :rotate="props.isActive ? 90 : 0" />
                             </template>
                             <a-collapse-panel key="2" header="应用中心"> -->
-                        <a-row class="ssc" :gutter="[0,22]">
-                            <a-col :span="12" v-for="(item,index) in app_list" :key="index">
-                                <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/'+item.icon,item.name,item.app_dir)">
-                                    <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/'+item.icon" />
-                                    <div class="tools_name"><span>{{item.name}}</span></div>
-                                </div>
-                            </a-col>
-                        </a-row>
-                        <!-- </a-collapse-panel> -->
-                        <!-- </a-collapse> -->
-                    </a-tab-pane>
-                    <a-tab-pane key="3">
-                        <span slot="tab">
-                            <a-tooltip placement="top">
-                                <template slot="title">
-                                    <span>局部变量</span>
-                                </template>
-                                <a-icon type="thunderbolt" />
-                            </a-tooltip>
-                        </span>
-                        <a-button class="btnLcoalVar" icon="plus-circle" type="primary" @click="onOpenLoclVarAdd">
-                            添加局部变量
-                        </a-button>
-                        <a-list class="sscx" :data-source="local_var_data" :locale="{emptyText: '暂无数据'}">
-                            <a-list-item slot="renderItem" slot-scope="item">
-                                {{ item.key }}
-                                <div class="local-var-actipn">
-                                    <a-tooltip placement="left">
-                                        <template slot="title">
-                                            <span>删除</span>
-                                        </template>
-                                        <a-popconfirm title="是否要删除该局部变量?" ok-text="是" cancel-text="否" @confirm="delLocalVar(item.key)">
-                                            <a-icon class="del" type="delete" />
-                                        </a-popconfirm>
-                                    </a-tooltip>
+                            <a-row class="ssc" :gutter="[0,22]">
+                                <a-col :span="12" v-for="(item,index) in app_list" :key="index">
+                                    <div class="tools_div center" draggable="true" @dragend="onDragendAddNode($event,baseURL+'/app/'+item.icon,item.name,item.app_dir)">
+                                        <a-avatar class="avatar_img" :size="55" :src="baseURL+'/app/'+item.icon" />
+                                        <div class="tools_name"><span>{{item.name}}</span></div>
+                                    </div>
+                                </a-col>
+                            </a-row>
+                            <!-- </a-collapse-panel> -->
+                            <!-- </a-collapse> -->
+                        </a-tab-pane>
+                        <a-tab-pane key="3">
+                            <span slot="tab">
+                                <a-tooltip placement="top">
+                                    <template slot="title">
+                                        <span>局部变量</span>
+                                    </template>
+                                    <a-icon type="thunderbolt" />
+                                </a-tooltip>
+                            </span>
+                            <a-button class="btnLcoalVar" icon="plus-circle" type="primary" @click="onOpenLoclVarAdd">
+                                添加局部变量
+                            </a-button>
+                            <a-list class="sscx" :data-source="local_var_data" :locale="{emptyText: '暂无数据'}">
+                                <a-list-item slot="renderItem" slot-scope="item">
+                                    {{ item.key }}
+                                    <div class="local-var-actipn">
+                                        <a-tooltip placement="left">
+                                            <template slot="title">
+                                                <span>删除</span>
+                                            </template>
+                                            <a-popconfirm title="是否要删除该局部变量?" ok-text="是" cancel-text="否" @confirm="delLocalVar(item.key)">
+                                                <a-icon class="del" type="delete" />
+                                            </a-popconfirm>
+                                        </a-tooltip>
 
-                                    <a-tooltip placement="top">
-                                        <template slot="title">
-                                            <span>编辑</span>
-                                        </template>
-                                        <a-icon class="edit" type="form" @click="onOpenLoclVarEdit(item.key,item.value,item.remarks)" />
-                                    </a-tooltip>
-                                </div>
-                            </a-list-item>
-                        </a-list>
-                    </a-tab-pane>
-                </a-tabs>
-            </div>
-        </a-col>
-        <a-col flex="auto">
-            <a-page-header :sub-title="work_remarks">
-                <template slot="title">
-                    {{workflow_name}}
-                </template>
-                <template slot="tags">
-                    <a-tag color="#7d838c">
-                        <div v-for="(item,index) in type_data" :key="index">
-                            <span v-if="item.id==select_type">{{item.name}}</span>
-                        </div>
-                    </a-tag>
-                </template>
-                <template slot="extra">
-                    <a-tooltip placement="left">
-                        <template slot="title">
-                            <span>修改剧本信息</span>
-                        </template>
-                        <a-button size="small" shape="circle" icon="edit" @click="onShowUpdaeWorkFlow"></a-button>
-                    </a-tooltip>
-
-                    <a-tooltip placement="top">
-                        <template slot="title">
-                            <span>保存剧本</span>
-                        </template>
-                        <a-button size="small" shape="circle" type="primary" icon="cloud" :loading="saveLoading" @click="onSave()"></a-button>
-                    </a-tooltip>
-
-                    <a-tooltip placement="top">
-                        <template slot="title">
-                            <span>导出剧本</span>
-                        </template>
-                        <a-button style="background: #1d96b1;border-color: #1d96b1;" size="small" shape="circle" type="primary" icon="cloud-download" @click="onDown()"></a-button>
-                    </a-tooltip>
-                </template>
-            </a-page-header>
-            <div class="edit">
-                <a-tooltip placement="top">
+                                        <a-tooltip placement="top">
+                                            <template slot="title">
+                                                <span>编辑</span>
+                                            </template>
+                                            <a-icon class="edit" type="form" @click="onOpenLoclVarEdit(item.key,item.value,item.remarks)" />
+                                        </a-tooltip>
+                                    </div>
+                                </a-list-item>
+                            </a-list>
+                        </a-tab-pane>
+                    </a-tabs>
+                </div>
+            </a-col>
+            <a-col flex="auto">
+                <a-page-header :sub-title="work_remarks">
                     <template slot="title">
-                        <span>执行剧本</span>
+                        {{workflow_name}}
                     </template>
-                    <a-button :loading="execuLoading" size="large" class="btn_run" type="primary" shape="circle" icon="play-circle" @click="onRunCheck" />
+                    <template slot="tags">
+                        <a-tag color="#7d838c">
+                            <div v-for="(item,index) in type_data" :key="index">
+                                <span v-if="item.id==select_type">{{item.name}}</span>
+                            </div>
+                        </a-tag>
+                    </template>
+                    <template slot="extra">
+                        <a-tooltip placement="left">
+                            <template slot="title">
+                                <span>修改剧本信息</span>
+                            </template>
+                            <a-button size="small" shape="circle" icon="edit" @click="onShowUpdaeWorkFlow"></a-button>
+                        </a-tooltip>
+
+                        <a-tooltip placement="top">
+                            <template slot="title">
+                                <span>保存剧本</span>
+                            </template>
+                            <a-button size="small" shape="circle" type="primary" icon="cloud" :loading="saveLoading" @click="onSave()"></a-button>
+                        </a-tooltip>
+
+                        <a-tooltip placement="top">
+                            <template slot="title">
+                                <span>导出剧本</span>
+                            </template>
+                            <a-button style="background: #1d96b1;border-color: #1d96b1;" size="small" shape="circle" type="primary" icon="cloud-download" @click="onDown()"></a-button>
+                        </a-tooltip>
+                    </template>
+                </a-page-header>
+                <div class="edit">
+                    <a-tooltip placement="top">
+                        <template slot="title">
+                            <span>执行剧本</span>
+                        </template>
+                        <a-button :loading="execuLoading" size="large" class="btn_run" type="primary" shape="circle" icon="play-circle" @click="onRunCheck" />
+                    </a-tooltip>
+                    <div id="container"></div>
+                </div>
+            </a-col>
+        </a-row>
+
+        <a-drawer class="visible_log" :closable="false" :width="700" :maskClosable="false" :visible="visible_log" @close="onCloseLog">
+            <div>
+                <a-tooltip placement="left">
+                    <template slot="title">
+                        <span>关闭</span>
+                    </template>
+                    <a-icon class="pointer" type="close-circle" @click="onCloseLog" />
                 </a-tooltip>
-                <div id="container"></div>
+
+                <a-tooltip placement="top" v-if="is_btn_pdf">
+                    <template slot="title">
+                        <span>查看报告</span>
+                    </template>
+                    <a-icon style="margin-left: 7px;" class="pointer" type="file-pdf" @click="show_report" />
+                </a-tooltip>
+
+                <a-progress :percent="run_progress " size="small" />
             </div>
-        </a-col>
-    </a-row>
-
-    <a-drawer class="visible_log" :closable="false" :width="700" :maskClosable="false" :visible="visible_log" @close="onCloseLog">
-        <div>
-            <a-tooltip placement="left">
-                <template slot="title">
-                    <span>关闭</span>
-                </template>
-                <a-icon class="pointer" type="close-circle" @click="onCloseLog" />
-            </a-tooltip>
-
-            <a-tooltip placement="top" v-if="is_btn_pdf">
-                <template slot="title">
-                    <span>查看报告</span>
-                </template>
-                <a-icon style="margin-left: 7px;" class="pointer" type="file-pdf" @click="show_report" />
-            </a-tooltip>
-
-            <a-progress :percent="run_progress " size="small" />
-        </div>
-        <pre class="log_div">
+            <pre class="log_div">
             <p v-for="(item,index) in execute_log" :key="index"><a-tag v-if="item.status==0" color="#469823">正常</a-tag><a-tag v-if="item.status==1" color="#9e8c0a">警告</a-tag><a-tag v-if="item.status==2" color="#9c5656">错误</a-tag><a-tag v-if="item.status==3" color="#bf0c0c">危险</a-tag><span class="appname">[{{item.app_name}}]</span> - <span class="appresult">{{item.result}}</span> - <span class="time">{{item.create_time.replace("T", " ")}}</span></p>
         </pre>
-        <div class="center">
-            <a-spin tip="执行中..." size="large" :spinning="run_spinning"></a-spin>
-        </div>
-    </a-drawer>
+            <div class="center">
+                <a-spin tip="执行中..." size="large" :spinning="run_spinning"></a-spin>
+            </div>
+        </a-drawer>
 
-    <a-drawer title="节点编辑" :width="500" :visible="visible_edit" :body-style="{ paddingBottom: '80px' }" @close="onClose">
-        <a-form :form="form" layout="vertical" @submit="onUpdate">
-            <a-row :gutter="16">
-                <a-col :span="24" style="margin-bottom: 20px;">
-                    <span style="font-weight: bold;margin-right: 10px;">UUID : </span><span class="uuidcss">{{key}}</span>
-                </a-col>
+        <a-drawer title="节点编辑" :width="500" :visible="visible_edit" :body-style="{ paddingBottom: '80px' }" @close="onClose">
+            <a-form :form="form" layout="vertical" @submit="onUpdate">
+                <a-row :gutter="16">
+                    <a-col :span="24" style="margin-bottom: 20px;">
+                        <span style="font-weight: bold;margin-right: 10px;">UUID : </span><span class="uuidcss">{{key}}</span>
+                    </a-col>
 
-                <a-col :span="24">
-                    <a-form-item label="节点名称">
-                        <a-input v-decorator="[
+                    <a-col :span="24">
+                        <a-form-item label="节点名称">
+                            <a-input v-decorator="[
                   'node_name',
                   {
                     rules: [
@@ -208,32 +208,32 @@
                     ],
                   },
                 ]" placeholder="请输入节点名称" />
-                    </a-form-item>
-                </a-col>
+                        </a-form-item>
+                    </a-col>
 
-                <a-col :span="24">
-                    <a-form-item>
-                        <span slot="label">
-                            动作&nbsp;
-                            <a-tooltip title="使用说明">
-                                <a-icon class="pointer" @click="onShowMd" type="question-circle-o" />
-                            </a-tooltip>
-                        </span>
-                        <a-select show-search :filter-option="onFilterOption" v-decorator="[
+                    <a-col :span="24">
+                        <a-form-item>
+                            <span slot="label">
+                                动作&nbsp;
+                                <a-tooltip title="使用说明">
+                                    <a-icon class="pointer" @click="onShowMd" type="question-circle-o" />
+                                </a-tooltip>
+                            </span>
+                            <a-select show-search :filter-option="onFilterOption" v-decorator="[
                   'action',
                   {
                     rules: [{ required: true, message: '请选择执行动作' }],
                   },
                 ]" placeholder="请选择执行动作" @change="selectAppAction">
-                            <a-select-option v-for="(item, index) in app_info.action" :key="index" :value="item.func">{{ item.name }}</a-select-option>
-                        </a-select>
-                    </a-form-item>
-                </a-col>
+                                <a-select-option v-for="(item, index) in app_info.action" :key="index" :value="item.func">{{ item.name }}</a-select-option>
+                            </a-select>
+                        </a-form-item>
+                    </a-col>
 
-                <a-col :span="24" v-for="(item, index) in app_info_args" :key="index">
-                    <a-form-item v-if="item.type=='text'" :label="item.key">
-                        <div v-if="String(item.default)!=''">
-                            <a-input v-decorator="[
+                    <a-col :span="24" v-for="(item, index) in app_info_args" :key="index">
+                        <a-form-item v-if="item.type=='text'" :label="item.key">
+                            <div v-if="String(item.default)!=''">
+                                <a-input v-decorator="[
                             item.key,
                             {   
                                 initialValue:item.default,
@@ -243,9 +243,9 @@
                                 ]
                             },
                             ]" :placeholder="'请输入 '+item.key+' 参数的内容'" />
-                        </div>
-                        <div v-else>
-                            <a-input v-decorator="[
+                            </div>
+                            <div v-else>
+                                <a-input v-decorator="[
                             item.key,
                             {
                                 rules: 
@@ -254,12 +254,12 @@
                                 ]
                             },
                             ]" :placeholder="'请输入 '+item.key+' 参数的内容'" />
-                        </div>
-                    </a-form-item>
+                            </div>
+                        </a-form-item>
 
-                    <a-form-item v-if="item.type=='password'" :label="item.key">
-                        <div v-if="String(item.default)!=''">
-                            <a-input v-decorator="[
+                        <a-form-item v-if="item.type=='password'" :label="item.key">
+                            <div v-if="String(item.default)!=''">
+                                <a-input v-decorator="[
                             item.key,
                             {   
                                 initialValue:item.default,
@@ -269,9 +269,9 @@
                                 ]
                             },
                             ]" type="password" :placeholder="'请输入 '+item.key+' 参数的内容'" />
-                        </div>
-                        <div v-else>
-                            <a-input v-decorator="[
+                            </div>
+                            <div v-else>
+                                <a-input v-decorator="[
                             item.key,
                             {
                                 rules: 
@@ -280,12 +280,12 @@
                                 ]
                             },
                             ]" type="password" :placeholder="'请输入 '+item.key+' 参数的内容'" />
-                        </div>
-                    </a-form-item>
+                            </div>
+                        </a-form-item>
 
-                    <a-form-item v-else-if="item.type=='textarea'" :label="item.key">
-                        <div v-if="String(item.default)!=''">
-                            <a-textarea v-decorator="[
+                        <a-form-item v-else-if="item.type=='textarea'" :label="item.key">
+                            <div v-if="String(item.default)!=''">
+                                <a-textarea v-decorator="[
                             item.key,
                             {   
                                 initialValue:item.default,
@@ -295,9 +295,9 @@
                                 ]
                             },
                             ]" :rows="4" :placeholder="'请输入 '+item.key+' 参数的内容'" />
-                        </div>
-                        <div v-else>
-                            <a-textarea v-decorator="[
+                            </div>
+                            <div v-else>
+                                <a-textarea v-decorator="[
                             item.key,
                             {
                                 rules: 
@@ -306,12 +306,12 @@
                                 ]
                             },
                             ]" :rows="4" :placeholder="'请输入 '+item.key+' 参数的内容'" />
-                        </div>
-                    </a-form-item>
+                            </div>
+                        </a-form-item>
 
-                    <a-form-item v-else-if="item.type=='number'" :label="item.key">
-                        <div v-if="String(item.default)!=''">
-                            <a-input-number style="width:100%;" v-decorator="[
+                        <a-form-item v-else-if="item.type=='number'" :label="item.key">
+                            <div v-if="String(item.default)!=''">
+                                <a-input style="width:100%;" v-decorator="[
                             item.key,
                             {
                                 initialValue:item.default,
@@ -320,10 +320,10 @@
                                     { required: item.required, message: '请输入 '+item.key+' 参数的内容' }
                                 ]
                             },
-                            ]" :rows="4" :placeholder="'请输入 '+item.key+' 参数的数字内容'" />
-                        </div>
-                        <div v-else>
-                            <a-input-number style="width:100%;" v-decorator="[
+                            ]" :placeholder="'请输入 '+item.key+' 参数的数字内容'" />
+                            </div>
+                            <div v-else>
+                                <a-input style="width:100%;" v-decorator="[
                             item.key,
                             {
                                 rules: 
@@ -331,14 +331,14 @@
                                     { required: item.required, message: '请输入 '+item.key+' 参数的内容' }
                                 ]
                             },
-                            ]" :rows="4" :placeholder="'请输入 '+item.key+' 参数的数字内容'" />
-                        </div>
+                            ]" :placeholder="'请输入 '+item.key+' 参数的数字内容'" />
+                            </div>
 
-                    </a-form-item>
+                        </a-form-item>
 
-                    <a-form-item v-else-if="item.type=='select'" :label="item.key">
-                        <div v-if="String(item.default)!=''">
-                            <a-select show-search :filter-option="onFilterOption" v-decorator="[
+                        <a-form-item v-else-if="item.type=='select'" :label="item.key">
+                            <div v-if="String(item.default)!=''">
+                                <a-select show-search :filter-option="onFilterOption" v-decorator="[
                             item.key,
                             {
                                 initialValue:item.default,
@@ -348,12 +348,12 @@
                                 ]
                             },
                             ]" :placeholder="'请选择 '+item.key+' 参数的类型'">
-                                <a-select-option v-for="(item, index) in item.data" :key="index" :value="item">{{ item }}</a-select-option>
-                            </a-select>
-                        </div>
-                        <div v-else>
+                                    <a-select-option v-for="(item, index) in item.data" :key="index" :value="item">{{ item }}</a-select-option>
+                                </a-select>
+                            </div>
+                            <div v-else>
 
-                            <a-select show-search :filter-option="onFilterOption" v-decorator="[
+                                <a-select show-search :filter-option="onFilterOption" v-decorator="[
                             item.key,
                             {
                                 rules: 
@@ -362,20 +362,20 @@
                                 ]
                             },
                             ]" :placeholder="'请选择 '+item.key+' 参数的类型'">
-                                <a-select-option v-for="(item, index) in item.data" :key="index" :value="item">{{ item }}</a-select-option>
-                            </a-select>
-                        </div>
+                                    <a-select-option v-for="(item, index) in item.data" :key="index" :value="item">{{ item }}</a-select-option>
+                                </a-select>
+                            </div>
 
-                    </a-form-item>
+                        </a-form-item>
 
-                </a-col>
-            </a-row>
+                    </a-col>
+                </a-row>
 
-            <a-drawer :title=" app_title" :width="600" :visible="visible_md" :body-style="{ paddingBottom: '80px' }" @close="onCloseMd">
-                <div class="markdown-body" v-html="html"></div>
-            </a-drawer>
+                <a-drawer :title=" app_title" :width="600" :visible="visible_md" :body-style="{ paddingBottom: '80px' }" @close="onCloseMd">
+                    <div class="markdown-body" v-html="html"></div>
+                </a-drawer>
 
-            <div :style="{
+                <div :style="{
             position: 'absolute',
             right: 0,
             bottom: 0,
@@ -386,20 +386,20 @@
             textAlign: 'right',
             zIndex: 1,
           }">
-                <a-button :style="{ marginRight: '8px' }" @click="onClose">关闭</a-button>
-                <a-button type="primary" html-type="submit">
-                    保存
-                </a-button>
-            </div>
-        </a-form>
-    </a-drawer>
+                    <a-button :style="{ marginRight: '8px' }" @click="onClose">关闭</a-button>
+                    <a-button type="primary" html-type="submit">
+                        保存
+                    </a-button>
+                </div>
+            </a-form>
+        </a-drawer>
 
-    <a-drawer title="链路编辑" :width="300" :visible="visible_edit_edge" :body-style="{ paddingBottom: '80px' }" @close="onCloseEdge">
-        <a-form :form="form_edge" layout="vertical" @submit="onUpdateEdge">
-            <a-row :gutter="16">
-                <a-col :span="24">
-                    <a-form-item label="链路说明">
-                        <a-input v-decorator="[
+        <a-drawer title="链路编辑" :width="300" :visible="visible_edit_edge" :body-style="{ paddingBottom: '80px' }" @close="onCloseEdge">
+            <a-form :form="form_edge" layout="vertical" @submit="onUpdateEdge">
+                <a-row :gutter="16">
+                    <a-col :span="24">
+                        <a-form-item label="链路说明">
+                            <a-input v-decorator="[
                   'edge_name',
                   {
                     rules: [
@@ -407,45 +407,46 @@
                     ],
                   },
                 ]" placeholder="请输入链路说明" />
-                    </a-form-item>
-                </a-col>
+                        </a-form-item>
+                    </a-col>
 
-                <a-col :span="24">
-                    <a-form-item label="判断开关">
-                        <a-switch v-decorator="['switch', { valuePropName: 'checked' }]">
-                            <a-icon slot="checkedChildren" type="check" />
-                            <a-icon slot="unCheckedChildren" type="close" />
-                        </a-switch>
-                    </a-form-item>
-                </a-col>
+                    <a-col :span="24">
+                        <a-form-item label="判断开关">
+                            <a-switch v-decorator="['switch', { valuePropName: 'checked' }]">
+                                <a-icon slot="checkedChildren" type="check" />
+                                <a-icon slot="unCheckedChildren" type="close" />
+                            </a-switch>
+                        </a-form-item>
+                    </a-col>
 
-                <a-col :span="24">
-                    <a-form-item label="判断动作">
-                        <a-select show-search :filter-option="onFilterOption" v-decorator="[
+                    <a-col :span="24">
+                        <a-form-item label="判断动作">
+                            <a-select show-search :filter-option="onFilterOption" v-decorator="[
                   'action',
                 ]" placeholder="请选择判断动作">
-                            <a-select-option value="1">==</a-select-option>
-                            <a-select-option value="2">!=</a-select-option>
-                            <a-select-option value="3">正则表达式</a-select-option>
-                        </a-select>
-                    </a-form-item>
-                </a-col>
+                                <a-select-option value="1">==</a-select-option>
+                                <a-select-option value="2">!=</a-select-option>
+                                <a-select-option value="3">正则表达式</a-select-option>
+                                <a-select-option value="4">JSON 解析器</a-select-option>
+                            </a-select>
+                        </a-form-item>
+                    </a-col>
 
-                <a-col :span="24">
-                    <a-form-item label="判断条件">
-                        <a-input v-decorator="[
+                    <a-col :span="24">
+                        <a-form-item label="判断条件">
+                            <a-textarea v-decorator="[
                   'ifelse',
                   {
                     rules: [
-                      { max: 100, message: '条件长度不能超过100位' },
+                      { max: 500, message: '条件长度不能超过500位' },
                     ],
                   },
                 ]" placeholder="请输入条件" />
-                    </a-form-item>
-                </a-col>
-            </a-row>
+                        </a-form-item>
+                    </a-col>
+                </a-row>
 
-            <div :style="{
+                <div :style="{
             position: 'absolute',
             right: 0,
             bottom: 0,
@@ -456,24 +457,24 @@
             textAlign: 'right',
             zIndex: 1,
           }">
-                <a-button :style="{ marginRight: '8px' }" @click="onCloseEdge">关闭</a-button>
-                <a-button type="primary" html-type="submit">
-                    保存
-                </a-button>
-            </div>
-        </a-form>
-    </a-drawer>
+                    <a-button :style="{ marginRight: '8px' }" @click="onCloseEdge">关闭</a-button>
+                    <a-button type="primary" html-type="submit">
+                        保存
+                    </a-button>
+                </div>
+            </a-form>
+        </a-drawer>
 
-    <a-drawer title="定时器设定" :width="500" :visible="visible_timer_edit" :body-style="{ paddingBottom: '80px' }" @close="onCloseTimer">
-        <a-form :form="form_timer" layout="vertical" @submit="onUpdateTimer">
-            <a-row :gutter="16">
-                <a-col :span="24" style="margin-bottom: 20px;">
-                    <span style="font-weight: bold;margin-right: 10px;">UUID : </span><span class="uuidcss">{{key}}</span>
-                </a-col>
+        <a-drawer title="定时器设定" :width="500" :visible="visible_timer_edit" :body-style="{ paddingBottom: '80px' }" @close="onCloseTimer">
+            <a-form :form="form_timer" layout="vertical" @submit="onUpdateTimer">
+                <a-row :gutter="16">
+                    <a-col :span="24" style="margin-bottom: 20px;">
+                        <span style="font-weight: bold;margin-right: 10px;">UUID : </span><span class="uuidcss">{{key}}</span>
+                    </a-col>
 
-                <a-col :span="24">
-                    <a-form-item label="节点名称">
-                        <a-input v-decorator="[
+                    <a-col :span="24">
+                        <a-form-item label="节点名称">
+                            <a-input v-decorator="[
                   'node_name',
                   {
                     rules: [
@@ -482,130 +483,130 @@
                     ],
                   },
                 ]" placeholder="请输入节点名称" disabled="" />
-                    </a-form-item>
-                </a-col>
-                <div class="timer_css">
-                    <a-col :span="24">
-                        <a-radio-group v-model="time_type" @change="onChangTimeType" button-style="solid" style="margin-bottom: 20px;">
-                            <a-radio-button value="date">
-                                定时执行
-                            </a-radio-button>
-                            <a-radio-button value="interval">
-                                间隔执行
-                            </a-radio-button>
-                            <a-radio-button value="cron">
-                                执行计划
-                            </a-radio-button>
-                        </a-radio-group>
+                        </a-form-item>
                     </a-col>
-
-                    <div v-if="time_type=='date'">
+                    <div class="timer_css">
                         <a-col :span="24">
-                            <a-form-item label="执行时间">
-                                <a-date-picker :locale="locale" style="width: 100%;" v-decorator="[
+                            <a-radio-group v-model="time_type" @change="onChangTimeType" button-style="solid" style="margin-bottom: 20px;">
+                                <a-radio-button value="date">
+                                    定时执行
+                                </a-radio-button>
+                                <a-radio-button value="interval">
+                                    间隔执行
+                                </a-radio-button>
+                                <a-radio-button value="cron">
+                                    执行计划
+                                </a-radio-button>
+                            </a-radio-group>
+                        </a-col>
+
+                        <div v-if="time_type=='date'">
+                            <a-col :span="24">
+                                <a-form-item label="执行时间">
+                                    <a-date-picker :locale="locale" style="width: 100%;" v-decorator="[
                             'time',
                             {
                                 rules: [{ required: true, message: '请选择执行时间' },],
                             },
                             ]" show-time placeholder="请选择执行时间" />
-                            </a-form-item>
-                        </a-col>
-                    </div>
-                    <div v-else-if="time_type=='interval'">
-                        <a-col :span="24">
-                            <a-form-item label="间隔类型">
-                                <a-radio-group v-decorator="[
+                                </a-form-item>
+                            </a-col>
+                        </div>
+                        <div v-else-if="time_type=='interval'">
+                            <a-col :span="24">
+                                <a-form-item label="间隔类型">
+                                    <a-radio-group v-decorator="[
                             'interval_type',
                             {
                                 rules: [{ required: true, message: '请选择间隔类型' },],
                             },
                             ]">
-                                    <a-radio value="seconds">
-                                        秒钟
-                                    </a-radio>
-                                    <a-radio value="minutes">
-                                        分钟
-                                    </a-radio>
-                                    <a-radio value="hours">
-                                        小时
-                                    </a-radio>
-                                    <a-radio value="days">
-                                        天
-                                    </a-radio>
-                                    <a-radio value="weeks">
-                                        周
-                                    </a-radio>
-                                </a-radio-group>
-                            </a-form-item>
-                        </a-col>
-                        <a-col :span="24">
-                            <a-form-item label="间隔周期">
-                                <a-input-number style="width: 100%;" v-decorator="[
+                                        <a-radio value="seconds">
+                                            秒钟
+                                        </a-radio>
+                                        <a-radio value="minutes">
+                                            分钟
+                                        </a-radio>
+                                        <a-radio value="hours">
+                                            小时
+                                        </a-radio>
+                                        <a-radio value="days">
+                                            天
+                                        </a-radio>
+                                        <a-radio value="weeks">
+                                            周
+                                        </a-radio>
+                                    </a-radio-group>
+                                </a-form-item>
+                            </a-col>
+                            <a-col :span="24">
+                                <a-form-item label="间隔周期">
+                                    <a-input-number style="width: 100%;" v-decorator="[
                             'time',
                             {
                                 rules: [{ required: true, message: '请输入间隔周期' },],
                             },
                             ]" :min="1" :max="99999999" placeholder="请输入间隔周期" />
 
-                            </a-form-item>
-                        </a-col>
-                        <a-col :span="24">
-                            <a-form-item label="开始时间">
-                                <a-date-picker :locale="locale" style="width: 100%;" v-decorator="['start_date']" show-time placeholder="请选择开始时间" />
-                            </a-form-item>
-                        </a-col>
-                        <a-col :span="24">
-                            <a-form-item label="结束时间">
-                                <a-date-picker :locale="locale" style="width: 100%;" v-decorator="['end_date']" show-time placeholder="请选择结束时间" />
-                            </a-form-item>
-                        </a-col>
-                        <a-col :span="24">
-                            <a-form-item label="随机浮动时间 (秒)">
-                                <a-input-number style="width: 100%;" v-decorator="['jitter']" :min="0" :max="99999" placeholder="请输入浮动时间" />
-                            </a-form-item>
-                        </a-col>
-                    </div>
-                    <div v-else-if="time_type=='cron'">
-                        <a-col :span="24">
-                            <a-form-item>
-                                <span slot="label">
-                                    Cron 表达式&nbsp;
-                                    <a-tooltip title="使用说明">
-                                        <a-icon class="pointer" @click="onShowMdCron" type="question-circle-o" />
-                                    </a-tooltip>
-                                </span>
-                                <a-input style="width: 100%;" v-decorator="[
+                                </a-form-item>
+                            </a-col>
+                            <a-col :span="24">
+                                <a-form-item label="开始时间">
+                                    <a-date-picker :locale="locale" style="width: 100%;" v-decorator="['start_date']" show-time placeholder="请选择开始时间" />
+                                </a-form-item>
+                            </a-col>
+                            <a-col :span="24">
+                                <a-form-item label="结束时间">
+                                    <a-date-picker :locale="locale" style="width: 100%;" v-decorator="['end_date']" show-time placeholder="请选择结束时间" />
+                                </a-form-item>
+                            </a-col>
+                            <a-col :span="24">
+                                <a-form-item label="随机浮动时间 (秒)">
+                                    <a-input-number style="width: 100%;" v-decorator="['jitter']" :min="0" :max="99999" placeholder="请输入浮动时间" />
+                                </a-form-item>
+                            </a-col>
+                        </div>
+                        <div v-else-if="time_type=='cron'">
+                            <a-col :span="24">
+                                <a-form-item>
+                                    <span slot="label">
+                                        Cron 表达式&nbsp;
+                                        <a-tooltip title="使用说明">
+                                            <a-icon class="pointer" @click="onShowMdCron" type="question-circle-o" />
+                                        </a-tooltip>
+                                    </span>
+                                    <a-input style="width: 100%;" v-decorator="[
                             'time',
                             {
                                 rules: [{ required: true, message: '请输入 Cron 表达式' },],
                             },
                             ]" placeholder="请输入 Cron 表达式" />
-                            </a-form-item>
-                        </a-col>
-                        <a-col :span="24">
-                            <a-form-item label="开始时间">
-                                <a-date-picker :locale="locale" style="width: 100%;" v-decorator="['start_date']" show-time placeholder="请选择开始时间" />
-                            </a-form-item>
-                        </a-col>
-                        <a-col :span="24">
-                            <a-form-item label="结束时间">
-                                <a-date-picker :locale="locale" style="width: 100%;" v-decorator="['end_date']" show-time placeholder="请选择结束时间" />
-                            </a-form-item>
-                        </a-col>
-                        <a-col :span="24">
-                            <a-form-item label="随机浮动时间 (秒)">
-                                <a-input-number style="width: 100%;" v-decorator="['jitter']" :min="0" :max="99999" placeholder="请输入浮动时间" />
-                            </a-form-item>
-                        </a-col>
+                                </a-form-item>
+                            </a-col>
+                            <a-col :span="24">
+                                <a-form-item label="开始时间">
+                                    <a-date-picker :locale="locale" style="width: 100%;" v-decorator="['start_date']" show-time placeholder="请选择开始时间" />
+                                </a-form-item>
+                            </a-col>
+                            <a-col :span="24">
+                                <a-form-item label="结束时间">
+                                    <a-date-picker :locale="locale" style="width: 100%;" v-decorator="['end_date']" show-time placeholder="请选择结束时间" />
+                                </a-form-item>
+                            </a-col>
+                            <a-col :span="24">
+                                <a-form-item label="随机浮动时间 (秒)">
+                                    <a-input-number style="width: 100%;" v-decorator="['jitter']" :min="0" :max="99999" placeholder="请输入浮动时间" />
+                                </a-form-item>
+                            </a-col>
+                        </div>
                     </div>
-                </div>
-            </a-row>
+                </a-row>
 
-            <a-drawer :title="app_title" :width="600" :visible="visible_md" :body-style="{ paddingBottom: '80px' }" @close="onCloseMd">
-                <div class="markdown-body" v-html="html"></div>
-            </a-drawer>
+                <a-drawer :title="app_title" :width="600" :visible="visible_md" :body-style="{ paddingBottom: '80px' }" @close="onCloseMd">
+                    <div class="markdown-body" v-html="html"></div>
+                </a-drawer>
 
-            <div :style="{
+                <div :style="{
             position: 'absolute',
             right: 0,
             bottom: 0,
@@ -616,167 +617,167 @@
             textAlign: 'right',
             zIndex: 1,
           }">
-                <a-button :style="{ marginRight: '8px' }" @click="onClose">关闭</a-button>
-                <a-button type="primary" html-type="submit">
-                    保存
-                </a-button>
-            </div>
-        </a-form>
-    </a-drawer>
+                    <a-button :style="{ marginRight: '8px' }" @click="onClose">关闭</a-button>
+                    <a-button type="primary" html-type="submit">
+                        保存
+                    </a-button>
+                </div>
+            </a-form>
+        </a-drawer>
 
-    <a-modal title="添加局部变量" cancelText="关闭" okText="确定" :visible="visible_local_var_add" @ok="onSaveLocalVar" @cancel="onCloseLoclVarAdd">
-        <a-row :gutter="16">
-            <a-col :span="24">
-                <a-form-item label="Key">
-                    <a-input v-model="curr_local_key" placeholder="请输入 Key" />
-                </a-form-item>
-            </a-col>
-            <a-col :span="24">
-                <a-form-item label="Value">
-                    <a-input v-model="curr_local_value" placeholder="请输入 Value" />
-                </a-form-item>
-            </a-col>
-            <a-col :span="24">
-                <a-form-item label="备注">
-                    <a-textarea v-model="curr_local_remarks" placeholder="请输入备注" :rows="4" />
-                </a-form-item>
-            </a-col>
-        </a-row>
-    </a-modal>
-
-    <a-modal title="修改局部变量" cancelText="关闭" okText="确定" :visible="visible_local_var_edit" @ok="onUpdateLocalVar" @cancel="onCloseLoclVarEdit">
-        <a-row :gutter="16">
-            <a-col :span="24">
-                <a-form-item label="Key">
-                    <a-input :disabled="true" v-model="curr_local_key" placeholder="请输入 Key" />
-                </a-form-item>
-            </a-col>
-            <a-col :span="24">
-                <a-form-item label="Value">
-                    <a-input v-model="curr_local_value" placeholder="请输入 Value" />
-                </a-form-item>
-            </a-col>
-            <a-col :span="24">
-                <a-form-item label="备注">
-                    <a-textarea v-model="curr_local_remarks" placeholder="请输入备注" :rows="4" />
-                </a-form-item>
-            </a-col>
-        </a-row>
-    </a-modal>
-
-    <a-modal title="用户输入" cancelText="关闭" okText="确定" :visible="visible_input_app_edit" @ok="onSaveInputEdit" @cancel="onCloseInputEdit">
-        <a-row :gutter="16">
-            <a-col :span="24" style="margin-bottom: 20px;">
-                <span style="font-weight: bold;margin-right: 10px;">UUID : </span><span>{{input_app}}</span>
-            </a-col>
-            <a-col :span="24">
-                <a-form-item>
-                    <a-textarea v-model="input_text" placeholder="请输入内容" :rows="4" />
-                </a-form-item>
-            </a-col>
-        </a-row>
-    </a-modal>
-
-    <a-modal title="修改剧本信息" cancelText="关闭" okText="确定" :visible="visible_workflow_edit" @ok="onUpdatelWorkFlow" @cancel="onCloseLoclWorkFlow">
-        <a-row :gutter="16">
-            <a-col :span="24">
-                <a-form-item label="剧本分类">
-                    <a-select show-search :filter-option="onFilterOption" v-model="de_select_type" style="width: 100%" @change="onSelect" class="align">
-                        <a-select-option v-for="(item, index) in type_data" :key="index" :value="String(item.id)">{{ item.name }}</a-select-option>
-                    </a-select>
-                </a-form-item>
-            </a-col>
-            <a-col :span="24">
-                <a-form-item label="剧本名称">
-                    <a-input class="work_title" placeholder="请输入剧本名称" v-model="de_workflow_name" />
-                </a-form-item>
-            </a-col>
-            <a-col :span="24">
-                <a-form-item label="备注">
-                    <a-textarea class="work_remarks" placeholder="请输入剧本备注" :rows="4" v-model="de_work_remarks" />
-                </a-form-item>
-            </a-col>
-        </a-row>
-    </a-modal>
-
-    <a-modal title="PDF 报告" cancelText="关闭" okText="下载" :maskClosable="false" :width="800" :visible="visible_report" @ok="onSaveReport" @cancel="onCloseReport">
-        <div id="report">
-            <a-row :gutter="16" class="report" style="margin: auto;">
+        <a-modal title="添加局部变量" cancelText="关闭" okText="确定" :visible="visible_local_var_add" @ok="onSaveLocalVar" @cancel="onCloseLoclVarAdd">
+            <a-row :gutter="16">
                 <a-col :span="24">
-                    <div class="header">
-                        <img class="logo" :src="BaseURL+'/public/logo.png'" />
-                        <p class="logo_title">W5 SOAR v{{W5Version}} 执行报告 </p>
-                    </div>
+                    <a-form-item label="Key">
+                        <a-input v-model="curr_local_key" placeholder="请输入 Key" />
+                    </a-form-item>
                 </a-col>
                 <a-col :span="24">
-                    <div class="div1">
+                    <a-form-item label="Value">
+                        <a-input v-model="curr_local_value" placeholder="请输入 Value" />
+                    </a-form-item>
+                </a-col>
+                <a-col :span="24">
+                    <a-form-item label="备注">
+                        <a-textarea v-model="curr_local_remarks" placeholder="请输入备注" :rows="4" />
+                    </a-form-item>
+                </a-col>
+            </a-row>
+        </a-modal>
+
+        <a-modal title="修改局部变量" cancelText="关闭" okText="确定" :visible="visible_local_var_edit" @ok="onUpdateLocalVar" @cancel="onCloseLoclVarEdit">
+            <a-row :gutter="16">
+                <a-col :span="24">
+                    <a-form-item label="Key">
+                        <a-input :disabled="true" v-model="curr_local_key" placeholder="请输入 Key" />
+                    </a-form-item>
+                </a-col>
+                <a-col :span="24">
+                    <a-form-item label="Value">
+                        <a-input v-model="curr_local_value" placeholder="请输入 Value" />
+                    </a-form-item>
+                </a-col>
+                <a-col :span="24">
+                    <a-form-item label="备注">
+                        <a-textarea v-model="curr_local_remarks" placeholder="请输入备注" :rows="4" />
+                    </a-form-item>
+                </a-col>
+            </a-row>
+        </a-modal>
+
+        <a-modal title="用户输入" cancelText="关闭" okText="确定" :visible="visible_input_app_edit" @ok="onSaveInputEdit" @cancel="onCloseInputEdit">
+            <a-row :gutter="16">
+                <a-col :span="24" style="margin-bottom: 20px;">
+                    <span style="font-weight: bold;margin-right: 10px;">UUID : </span><span>{{input_app}}</span>
+                </a-col>
+                <a-col :span="24">
+                    <a-form-item>
+                        <a-textarea v-model="input_text" placeholder="请输入内容" :rows="4" />
+                    </a-form-item>
+                </a-col>
+            </a-row>
+        </a-modal>
+
+        <a-modal title="修改剧本信息" cancelText="关闭" okText="确定" :visible="visible_workflow_edit" @ok="onUpdatelWorkFlow" @cancel="onCloseLoclWorkFlow">
+            <a-row :gutter="16">
+                <a-col :span="24">
+                    <a-form-item label="剧本分类">
+                        <a-select show-search :filter-option="onFilterOption" v-model="de_select_type" style="width: 100%" @change="onSelect" class="align">
+                            <a-select-option v-for="(item, index) in type_data" :key="index" :value="String(item.id)">{{ item.name }}</a-select-option>
+                        </a-select>
+                    </a-form-item>
+                </a-col>
+                <a-col :span="24">
+                    <a-form-item label="剧本名称">
+                        <a-input class="work_title" placeholder="请输入剧本名称" v-model="de_workflow_name" />
+                    </a-form-item>
+                </a-col>
+                <a-col :span="24">
+                    <a-form-item label="备注">
+                        <a-textarea class="work_remarks" placeholder="请输入剧本备注" :rows="4" v-model="de_work_remarks" />
+                    </a-form-item>
+                </a-col>
+            </a-row>
+        </a-modal>
+
+        <a-modal title="PDF 报告" cancelText="关闭" okText="下载" :maskClosable="false" :width="800" :visible="visible_report" @ok="onSaveReport" @cancel="onCloseReport">
+            <div id="report">
+                <a-row :gutter="16" class="report" style="margin: auto;">
+                    <a-col :span="24">
+                        <div class="header">
+                            <img class="logo" :src="BaseURL+'/public/logo.png'" />
+                            <p class="logo_title">W5 SOAR v{{W5Version}} 执行报告 </p>
+                        </div>
+                    </a-col>
+                    <a-col :span="24">
+                        <div class="div1">
+                            <a-descriptions :column="1" bordered size="small">
+                                <div slot="title">
+                                    <span class="title">
+                                        <span class="jing">#</span>报告介绍
+                                    </span>
+                                </div>
+                                <a-descriptions-item label="编号">
+                                    <b>{{report_no}}</b>
+                                </a-descriptions-item>
+                                <a-descriptions-item label="剧本">
+                                    <b>{{workflow_name}}</b>
+                                </a-descriptions-item>
+                                <a-descriptions-item label="执行时间">
+                                    {{Dayjs(report_create_time).subtract(8, 'hour').format('YYYY-MM-DD HH:mm:ss')}}
+                                </a-descriptions-item>
+                                <a-descriptions-item label="备注">
+                                    {{work_remarks}}
+                                </a-descriptions-item>
+                            </a-descriptions>
+                        </div>
+                    </a-col>
+
+                    <a-col :span="24" v-for="(item,index) in report_log_data" :key="index" class="div2">
                         <a-descriptions :column="1" bordered size="small">
                             <div slot="title">
                                 <span class="title">
-                                    <span class="jing">#</span>报告介绍
+                                    <span class="jing">{{index+1}}、</span>{{item.app_name}}
+                                </span>
+                                <span v-if="item.app_name!='开始' && item.app_name!='结束' && item.app_name!='用户输入' && item.app_name!='WebHook' && item.app_name!='定时器'" class="desc">
+                                    {{item.args.description}}
                                 </span>
                             </div>
-                            <a-descriptions-item label="编号">
-                                <b>{{report_no}}</b>
+                            <a-descriptions-item label="UUID">
+                                <b>{{item.app_uuid}}</b>
                             </a-descriptions-item>
-                            <a-descriptions-item label="剧本">
-                                <b>{{workflow_name}}</b>
+                            <a-descriptions-item label="动作" v-if="item.app_name!='开始' && item.app_name!='结束' && item.app_name!='用户输入' && item.app_name!='WebHook' && item.app_name!='定时器'">
+                                <b>{{item.args.action_name}}</b>
+                            </a-descriptions-item>
+                            <a-descriptions-item label="参数" v-if="item.app_name!='开始' && item.app_name!='结束' && item.app_name!='用户输入' && item.app_name!='WebHook' && item.app_name!='定时器'">
+                                <div v-for="(i,key,index) in item.args" :key="index" class="args_list">
+                                    <div v-if="key!='action' && key!='action_name' && key!='description' && key!='node_name'">
+                                        <div class="args_title"><span class="jing">|</span> {{key}}</div>
+                                        <div>{{i}}</div>
+                                    </div>
+                                </div>
+                            </a-descriptions-item>
+                            <a-descriptions-item label="状态">
+                                <a-tag v-if="item.status==0" color="#469823">正常</a-tag>
+                                <a-tag v-if="item.status==1" color="#9e8c0a">警告</a-tag>
+                                <a-tag v-if="item.status==2" color="#9c5656">错误</a-tag>
+                                <a-tag v-if="item.status==3" color="#bf0c0c">危险</a-tag>
+                            </a-descriptions-item>
+                            <a-descriptions-item label="结果" v-if="item.app_name!=='用户输入' && item.app_name!=='WebHook'">
+                                <div v-html="item.html"></div>
+                            </a-descriptions-item>
+                            <a-descriptions-item label="输入" v-else>
+                                <div v-html="item.html"></div>
                             </a-descriptions-item>
                             <a-descriptions-item label="执行时间">
-                                {{Dayjs(report_create_time).subtract(8, 'hour').format('YYYY-MM-DD HH:mm:ss')}}
-                            </a-descriptions-item>
-                            <a-descriptions-item label="备注">
-                                {{work_remarks}}
+                                {{Dayjs(item.create_time).subtract(8, 'hour').format('YYYY-MM-DD HH:mm:ss')}}
                             </a-descriptions-item>
                         </a-descriptions>
-                    </div>
-                </a-col>
-
-                <a-col :span="24" v-for="(item,index) in report_log_data" :key="index" class="div2">
-                    <a-descriptions :column="1" bordered size="small">
-                        <div slot="title">
-                            <span class="title">
-                                <span class="jing">{{index+1}}、</span>{{item.app_name}}
-                            </span>
-                            <span v-if="item.app_name!='开始' && item.app_name!='结束' && item.app_name!='用户输入' && item.app_name!='WebHook' && item.app_name!='定时器'" class="desc">
-                                {{item.args.description}}
-                            </span>
-                        </div>
-                        <a-descriptions-item label="UUID">
-                            <b>{{item.app_uuid}}</b>
-                        </a-descriptions-item>
-                        <a-descriptions-item label="动作" v-if="item.app_name!='开始' && item.app_name!='结束' && item.app_name!='用户输入' && item.app_name!='WebHook' && item.app_name!='定时器'">
-                            <b>{{item.args.action_name}}</b>
-                        </a-descriptions-item>
-                        <a-descriptions-item label="参数" v-if="item.app_name!='开始' && item.app_name!='结束' && item.app_name!='用户输入' && item.app_name!='WebHook' && item.app_name!='定时器'">
-                            <div v-for="(i,key,index) in item.args" :key="index" class="args_list">
-                                <div v-if="key!='action' && key!='action_name' && key!='description' && key!='node_name'">
-                                    <div class="args_title"><span class="jing">|</span> {{key}}</div>
-                                    <div>{{i}}</div>
-                                </div>
-                            </div>
-                        </a-descriptions-item>
-                        <a-descriptions-item label="状态">
-                            <a-tag v-if="item.status==0" color="#469823">正常</a-tag>
-                            <a-tag v-if="item.status==1" color="#9e8c0a">警告</a-tag>
-                            <a-tag v-if="item.status==2" color="#9c5656">错误</a-tag>
-                            <a-tag v-if="item.status==3" color="#bf0c0c">危险</a-tag>
-                        </a-descriptions-item>
-                        <a-descriptions-item label="结果" v-if="item.app_name!=='用户输入' && item.app_name!=='WebHook'">
-                            <div v-html="item.html"></div>
-                        </a-descriptions-item>
-                        <a-descriptions-item label="输入" v-else>
-                            <div v-html="item.html"></div>
-                        </a-descriptions-item>
-                        <a-descriptions-item label="执行时间">
-                            {{Dayjs(item.create_time).subtract(8, 'hour').format('YYYY-MM-DD HH:mm:ss')}}
-                        </a-descriptions-item>
-                    </a-descriptions>
-                </a-col>
-            </a-row>
-        </div>
-    </a-modal>
-</div>
+                    </a-col>
+                </a-row>
+            </div>
+        </a-modal>
+    </div>
 </template>
 
 <script>

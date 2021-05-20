@@ -1,72 +1,72 @@
 <template>
-<a-layout-header class="headerx">
-    <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="collapsedClick" />
+    <a-layout-header class="headerx">
+        <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="collapsedClick" />
 
-    <div class="userinfo">
-        <a-space :size="space_size">
-            <a-tooltip placement="bottom">
-                <template slot="title">
-                    <span>帮助文档</span>
-                </template>
-                <a href="https://w5.io/help" target="_bank">
-                    <a-icon type="question-circle" />
-                </a>
-            </a-tooltip>
+        <div class="userinfo">
+            <a-space :size="space_size">
+                <a-tooltip placement="bottom">
+                    <template slot="title">
+                        <span>帮助文档</span>
+                    </template>
+                    <a href="https://w5.io/help" target="_bank">
+                        <a-icon type="question-circle" />
+                    </a>
+                </a-tooltip>
 
-            <a-tooltip placement="bottom">
-                <template slot="title">
-                    <span>Github</span>
-                </template>
-                <a href="https://github.com/w5hub/w5" target="_bank">
-                    <a-icon type="github" theme="filled" />
-                </a>
-            </a-tooltip>
+                <a-tooltip placement="bottom">
+                    <template slot="title">
+                        <span>Github</span>
+                    </template>
+                    <a href="https://github.com/w5hub/w5" target="_bank">
+                        <a-icon type="github" theme="filled" />
+                    </a>
+                </a-tooltip>
 
-            <a-dropdown>
-                <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
-                    <a-icon type="skin" />
-                    <a-icon class="icon" type="down" />
-                </a>
-                <a-menu slot="overlay">
-                    <a-menu-item v-if="curr_theme == 'dark'">
-                        <a href="javascript:;" @click="setTheme('dark')">暗色</a>
-                    </a-menu-item>
-                    <a-menu-item v-else>
-                        <a href="javascript:;" @click="setTheme('dark')">暗色</a>
-                    </a-menu-item>
+                <a-dropdown>
+                    <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
+                        <a-icon type="skin" />
+                        <a-icon class="icon" type="down" />
+                    </a>
+                    <a-menu slot="overlay">
+                        <a-menu-item v-if="curr_theme == 'dark'">
+                            <a href="javascript:;" @click="setTheme('dark')">暗色</a>
+                        </a-menu-item>
+                        <a-menu-item v-else>
+                            <a href="javascript:;" @click="setTheme('dark')">暗色</a>
+                        </a-menu-item>
 
-                    <a-menu-item v-if="curr_theme == 'bright'">
-                        <a href="javascript:;" @click="setTheme('bright')">亮色</a>
-                    </a-menu-item>
-                    <a-menu-item v-else>
-                        <a href="javascript:;" @click="setTheme('bright')">亮色</a>
-                    </a-menu-item>
-                </a-menu>
-            </a-dropdown>
+                        <a-menu-item v-if="curr_theme == 'bright'">
+                            <a href="javascript:;" @click="setTheme('bright')">亮色</a>
+                        </a-menu-item>
+                        <a-menu-item v-else>
+                            <a href="javascript:;" @click="setTheme('bright')">亮色</a>
+                        </a-menu-item>
+                    </a-menu>
+                </a-dropdown>
 
-            <a-dropdown>
-                <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
-                    <a-avatar class="avatar" size="small" :src="baseURL+'/public/logo.png'" />
+                <a-dropdown>
+                    <a class="ant-dropdown-link" @click="(e) => e.preventDefault()">
+                        <a-avatar class="avatar" size="small" :src="baseURL+'/public/logo.png'" />
 
-                    <span class="name">{{ nick_name }}
-                        <a-icon class="icon" type="down" /></span>
-                </a>
-                <a-menu slot="overlay">
-                    <a-menu-item>
-                        <a href="javascript:;" @click="update_version">
-                            <a-icon type="sync" /> 检测更新</a>
-                    </a-menu-item>
-                    <a-menu-divider />
-                    <a-menu-item>
-                        <a href="javascript:;" @click="logout">
-                            <a-icon type="logout" />
-                            退出</a>
-                    </a-menu-item>
-                </a-menu>
-            </a-dropdown>
-        </a-space>
-    </div>
-</a-layout-header>
+                        <span class="name">{{ nick_name }}
+                            <a-icon class="icon" type="down" /></span>
+                    </a>
+                    <a-menu slot="overlay">
+                        <a-menu-item>
+                            <a href="javascript:;" @click="update_version">
+                                <a-icon type="sync" /> 检测更新</a>
+                        </a-menu-item>
+                        <a-menu-divider />
+                        <a-menu-item>
+                            <a href="javascript:;" @click="logout">
+                                <a-icon type="logout" />
+                                退出</a>
+                        </a-menu-item>
+                    </a-menu>
+                </a-dropdown>
+            </a-space>
+        </div>
+    </a-layout-header>
 </template>
 
 <script>
@@ -144,6 +144,16 @@ export default {
                     if (res.code == 0) {
                         let data = res.data;
                         if (data.is_w5 == true) {
+                            if (data.w5 == "fail") {
+                                this.$notification["warning"]({
+                                    message: `W5 SOAR 提醒你`,
+                                    description: "检测更新超时",
+                                    duration: 2
+                                });
+
+                                return false;
+                            }
+
                             let key = `w5_${Date.now()}`;
                             this.$notification["info"]({
                                 message: `W5 SOAR ${data.w5.version} 更新提醒`,
@@ -178,7 +188,7 @@ export default {
                             }
                         }
                     } else {
-                        this.$message.error("检测更新失败");
+                        this.$message.error("检测更新超时");
                     }
                 });
         },

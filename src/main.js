@@ -27,7 +27,7 @@ Vue.config.productionTip = false;
 
 // Vue.prototype.BaseURL = document.location.origin.replace("8080", "8888");
 Vue.prototype.BaseURL = document.location.origin;
-Vue.prototype.W5Version = "0.3.3";
+Vue.prototype.W5Version = "0.4";
 Vue.prototype.Dayjs = dayjs;
 Vue.http = Vue.prototype.$http = axios;
 
@@ -54,7 +54,7 @@ axios.interceptors.request.use(
 //添加响应拦截器
 axios.interceptors.response.use(
   function (response) {
-    if (response.data.code == 1002) {
+    if (response.data.code == 9002) {
       // token 失效
       $cookies.remove("token");
       $cookies.remove("nick_name");
@@ -62,7 +62,7 @@ axios.interceptors.response.use(
       $cookies.remove("user_id");
 
       window.location.href = "/";
-    } else if (response.data.code == 1003) {
+    } else if (response.data.code == 9002) {
       // 无权限访问
       router.push({name: "err403"});
     }
