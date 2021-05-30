@@ -27,7 +27,7 @@ Vue.config.productionTip = false;
 
 // Vue.prototype.BaseURL = document.location.origin.replace("8080", "8888");
 Vue.prototype.BaseURL = document.location.origin;
-Vue.prototype.W5Version = "0.4";
+Vue.prototype.W5Version = "0.4.1";
 Vue.prototype.Dayjs = dayjs;
 Vue.http = Vue.prototype.$http = axios;
 

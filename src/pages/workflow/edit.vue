@@ -617,7 +617,7 @@
             textAlign: 'right',
             zIndex: 1,
           }">
-                    <a-button :style="{ marginRight: '8px' }" @click="onClose">关闭</a-button>
+                    <a-button :style="{ marginRight: '8px' }" @click="onCloseTimer">关闭</a-button>
                     <a-button type="primary" html-type="submit">
                         保存
                     </a-button>
@@ -781,7 +781,7 @@
 </template>
 
 <script>
-import G6 from "@antv/g6";
+import G6 from '@antv/g6/dist/g6.min.js'
 import insertCss from 'insert-css';
 import {
     uuid
@@ -1440,10 +1440,15 @@ export default {
 
             this.data.nodes = this.graph.save().nodes;
 
-            this.app_data[node_id] = this.app_list[app_dir]
+            let appList = this.deepClone(this.app_list);
+
+            this.app_data[node_id] = appList[app_dir]
 
             this.onTheme();
             this.onSave();
+        },
+        deepClone(src) {
+            return JSON.parse(JSON.stringify(src));
         },
         onFlowChart() {
             G6.registerBehavior('click-add-edge', {
@@ -1462,12 +1467,25 @@ export default {
                         x: ev.x,
                         y: ev.y
                     };
-                    const model = node.getModel();
+                    const model = node._cfg;
 
                     if (self.addingEdge && self.edge) {
+
+                        let edgesData=self.graph.save().edges;
+
+                        for (let index = 0; index < edgesData.length; index++) {
+                            if((self.edge._cfg.model.source===edgesData[index].source && model.id===edgesData[index].target)||(self.edge._cfg.model.source===edgesData[index].target && model.id===edgesData[index].source)){
+                                return false;
+                            }
+                        }
+
+                        if(self.edge._cfg.model.source===model.id){
+                            return false;
+                        }
+
                         graph.updateItem(self.edge, {
                             target: model.id,
-                            type: "polyline"
+                            type: "cubic"
                         });
 
                         self.edge = null;
@@ -1650,7 +1668,7 @@ export default {
                         edit_data["node_name"] = name;
                         this.time_type = edit_data['type']
 
-                        delete edit_data["type"];
+                        // delete edit_data["type"];
 
                         this.$nextTick(() => {
                             setTimeout(() => {
